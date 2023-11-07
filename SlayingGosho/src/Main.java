@@ -2,10 +2,11 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
+    static int potCount = 2;
+    static int playerHp = 100;
+
     public static void main(String[] args) throws InterruptedException {
-
         Scanner scan = new Scanner(System.in);
-
 
         System.out.println("SLAYING GOSHO THE DRAGON");
         wait(2000);
@@ -25,9 +26,6 @@ public class Main {
         System.out.println("As you enter the cave, you check your bag. Good thing you took your handy-dandy sword along! You also have two Health potions.");
         wait(5000);
 
-
-        int healthPotion = 2;
-        int playerHP = 100;
         String action;
 
         System.out.println("Venturing into the cave, you come upon a dimly lit hall, a whole pig skewered over a fire in the hall's center.");
@@ -46,40 +44,37 @@ public class Main {
         wait(4500);
 
         int ogreHP = 100;
+
+        // the check is kind of useless since there is a check in the while to break, left for own sanity
         while (ogreHP > 0) {
 
             System.out.println("What would you like to do?");
 
-            action = scan.next();
+            action = scan.nextLine();
 
-            if (action.equals("pot") && healthPotion > 0) {
-                playerHP = 100;
-                healthPotion = healthPotion - 1;
+            if (action.equals("pot")) {
+                drinkPot();
                 continue;
             }
-            else if (healthPotion <= 0 && action.equals("pot")) {
-                System.out.println("You're out of health potions!");
-                continue;
-            }
-            else if (action.equals("sword")) {
-                ogreHP = damageCalc(action, ogreHP);
+
+            if (action.equals("sword")) {
+                ogreHP -= damageCalc(action);
                 if (ogreHP > 0) {
-                System.out.println("The Ogre has " + ogreHP + " health left!");
-                }
-                else {
+                    System.out.println("The Ogre has " + ogreHP + " health left!");
+                } else {
                     System.out.println("The Ogre has been slain!");
                     wait(3000);
                     break;
                 }
-            }
-            else {
+            } else {
                 System.out.println("This is not a valid choice! I ask again: What would you like to do?");
                 continue;
             }
+
             wait(2000);
 
-            playerHP = playerHP - 15;
-            System.out.println("The Ogre attacks! You have " + playerHP + " health left!");
+            playerHp = playerHp - 15;
+            System.out.println("The Ogre attacks! You have " + playerHp + " health left!");
             wait(2000);
         }
 
@@ -89,7 +84,7 @@ public class Main {
         System.out.println("Rummaging through the Ogre's coffer, you also find a health potion!");
         wait(4000);
 
-        healthPotion = healthPotion + 1;
+        potCount = potCount + 1;
 
         System.out.println("You continue down the cave system. Before long you come upon a great gate!");
         wait(4000);
@@ -106,19 +101,15 @@ public class Main {
         int blackKnightHp = 200;
         while (blackKnightHp > 0) {
             System.out.println("What would you like to do?");
-            action = scan.next();
+            action = scan.nextLine();
 
-            if (action.equals("pot") && healthPotion > 0) {
-                playerHP = 100;
-                healthPotion = healthPotion - 1;
+            if (action.equals("pot")) {
+                drinkPot();
                 continue;
             }
-            else if (healthPotion <= 0 && action.equals("pot")) {
-                System.out.println("You're out of health potions!");
-                continue;
-            }
-            else if (action.equals("sword") || action.equals("axe")) {
-                blackKnightHp = damageCalc(action, blackKnightHp);
+
+            if (action.equals("sword") || action.equals("axe")) {
+                blackKnightHp -= damageCalc(action);
                 if (blackKnightHp > 0) {
                     System.out.println("The Black Knight has " + blackKnightHp + " health left!");
                 } else {
@@ -126,27 +117,26 @@ public class Main {
                     wait(3000);
                     break;
                 }
-            }
-            else {
-                    System.out.println("This is not a valid choice! I ask again: What would you like to do?");
-                    continue;
+            } else {
+                System.out.println("This is not a valid choice! I ask again: What would you like to do?");
+                continue;
             }
 
-            playerHP = playerHP - 20;
-            if (playerHP <= 0) {
+            playerHp = playerHp - 20;
+            if (playerHp <= 0) {
                 System.out.println("The Black Knight attacks! You scream as his blade plunges into your heart. You fall to your knees as everything goes black...");
                 System.out.println("GAME OVER!");
                 System.exit(0);
             }
             wait(2000);
-            System.out.println("The Black Knight attacks! You have " + playerHP + " health left!");
+            System.out.println("The Black Knight attacks! You have " + playerHp + " health left!");
             wait(2000);
         }
 
         System.out.println("Very well done! Nearby is a chest in which you find a bow, some arrows and another health potion!");
         wait(4000);
 
-        healthPotion = healthPotion + 1;
+        potCount = potCount + 1;
 
         System.out.println("The time has come. Beyond the gate lies Gosho! The mighty fire-breathing dragon!");
         wait(4000);
@@ -189,85 +179,72 @@ public class Main {
         int dragonHp = 400;
         while (dragonHp >= 200) {
             System.out.println("What would you like to do?");
-            action = scan.next();
+            action = scan.nextLine();
 
-            if (action.equals("pot") && healthPotion > 0) {
-                playerHP = 100;
-                healthPotion = healthPotion - 1;
+            if (action.equals("pot")) {
+                drinkPot();
                 continue;
             }
-            else if (healthPotion <= 0 && action.equals("pot")) {
-                System.out.println("You're out of health potions!");
-                continue;
-            }
-            else if (action.equals("sword") || action.equals("axe") || action.equals("bow")) {
-                dragonHp = damageCalc(action, dragonHp);
+
+            if (action.equals("sword") || action.equals("axe") || action.equals("bow")) {
+                dragonHp -= damageCalc(action);
                 if (dragonHp >= 200) {
                     System.out.println("GOSHO, the Dragon has " + dragonHp + " health left!");
-                }
-                else {
+                } else {
                     System.out.println("GOSHO, the Dragon has " + dragonHp + " health left!");
                     wait(3000);
                     System.out.println("GOSHO, the Dragon flies up into the air, out of reach of your melee weapons!");
                     wait(3000);
                     break;
                 }
-            }
-            else {
+            } else {
                 System.out.println("This is not a valid choice! I ask again: What would you like to do?");
                 continue;
             }
 
-            playerHP = playerHP - 25;
-            if (playerHP <= 0) {
+            playerHp = playerHp - 25;
+            if (playerHp <= 0) {
                 System.out.println("GOSHO, the Dragon attacks! Fire engulfs you and you can feel your very flesh melting!");
                 System.out.println("GAME OVER!");
                 System.exit(0);
             }
             wait(2000);
-            System.out.println("GOSHO, the Dragon attacks! You have " + playerHP + " health left!");
+            System.out.println("GOSHO, the Dragon attacks! You have " + playerHp + " health left!");
             wait(2000);
         }
         while (dragonHp > 0) {
             System.out.println("What would you like to do?");
-            action = scan.next();
+            action = scan.nextLine();
 
-            if (action.equals("pot") && healthPotion > 0) {
-                playerHP = 100;
-                healthPotion = healthPotion - 1;
+            if (action.equals("pot")) {
+                drinkPot();
                 continue;
             }
-            else if (healthPotion <= 0 && action.equals("pot")) {
-                System.out.println("You're out of health potions!");
-                continue;
-            }
-            else if (action.equals("bow")) {
-                dragonHp = damageCalc(action, dragonHp);
+
+            if (action.equals("bow")) {
+                dragonHp -= damageCalc(action);
                 if (dragonHp >= 0) {
                     System.out.println("GOSHO, the Dragon has " + dragonHp + " health left!");
-                }
-                else {
+                } else {
                     System.out.println("GOSHO, the Dragon has been slain!!!");
                     wait(3000);
                     break;
                 }
-            }
-            else if (action.equals("sword") || action.equals("axe")) {
+            } else if (action.equals("sword") || action.equals("axe")) {
                 System.out.println("Melee weapons have no effect on GOSHO while he's airborne!");
-            }
-            else {
+            } else {
                 System.out.println("This is not a valid choice! I ask again: What would you like to do?");
                 continue;
             }
 
-            playerHP = playerHP - 25;
-            if (playerHP <= 0) {
+            playerHp = playerHp - 25;
+            if (playerHp <= 0) {
                 System.out.println("GOSHO, the Dragon attacks! Fire engulfs you and you can feel your very flesh melting!");
                 System.out.println("GAME OVER!");
                 System.exit(0);
             }
             wait(2000);
-            System.out.println("GOSHO, the Dragon attacks! You have " + playerHP + " health left!");
+            System.out.println("GOSHO, the Dragon attacks! You have " + playerHp + " health left!");
             wait(2000);
 
         }
@@ -278,29 +255,33 @@ public class Main {
 
     }
 
-    static int damageCalc (String weapon, int hp) {
+    static void drinkPot() {
+        if (potCount > 0) {
+            playerHp = 100;
+            potCount--;
+        } else {
+            System.out.println("You're out of health potions!");
+        }
+    }
+
+    static int damageCalc(String weapon) {
         Random RNGDmg = new Random();
-        int hpLeft = hp;
+
         switch (weapon) {
             case ("sword"):
-                hpLeft = hp - (30 + RNGDmg.nextInt(10));
-                break;
+                return 30 + RNGDmg.nextInt(10);
 
             case ("axe"):
-                hpLeft = hp - (20 + RNGDmg.nextInt(50));
-                break;
+                return 20 + RNGDmg.nextInt(50);
 
             case ("bow"):
-                hpLeft = hp - (15 + RNGDmg.nextInt(25));
-                break;
-            default :
-                hpLeft = hp;
-        }
+                return 15 + RNGDmg.nextInt(25);
 
-        return hpLeft;
+            default:
+                return 0;
+        }
     }
-    
-   // java 14 method suggested by java as a replacement for if variant (see below) 
+    // java 14 method suggested by java as a replacement for if variant (see below)
    /* static int damageCalc (String weapon, int hp)
     {
         Random RNGDmg = new Random();
@@ -312,10 +293,10 @@ public class Main {
         };
 
         return hpLeft;
-    } */
+    }
     
 // alternative method for damage calculation using if instead of switch
-/* static int damageCalc (String weapon, int hp) {
+static int damageCalc (String weapon, int hp) {
         Random RNGDmg = new Random();
         int hpLeft = hp;
         if (weapon.equals("sword")) {
@@ -329,8 +310,8 @@ public class Main {
         }  
         return hpLeft;
     } */
-    
-    static void wait (int time) throws InterruptedException {
+
+    static void wait(int time) throws InterruptedException {
         Thread.sleep(time);
     }
 }
