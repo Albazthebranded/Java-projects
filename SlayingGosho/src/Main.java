@@ -293,6 +293,8 @@ public class Main {
             case ("bow"):
                 hpLeft = hp - (15 + RNGDmg.nextInt(25));
                 break;
+            default :
+                hpLeft = hp;
         }
 
         return hpLeft;
