@@ -278,7 +278,28 @@ public class Main {
 
     }
 
-    static int damageCalc (String weapon, int hp)
+    static int damageCalc (String weapon, int hp) {
+        Random RNGDmg = new Random();
+        int hpLeft = hp;
+        switch (weapon) {
+            case ("sword"):
+                hpLeft = hp - (30 + RNGDmg.nextInt(10));
+                break;
+
+            case ("axe"):
+                hpLeft = hp - (20 + RNGDmg.nextInt(50));
+                break;
+
+            case ("bow"):
+                hpLeft = hp - (15 + RNGDmg.nextInt(25));
+                break;
+        }
+
+        return hpLeft;
+    }
+    
+   // java 14 method suggested by java as a replacement for if variant (see below) 
+   /* static int damageCalc (String weapon, int hp)
     {
         Random RNGDmg = new Random();
         int hpLeft = switch (weapon) {
@@ -289,7 +310,7 @@ public class Main {
         };
 
         return hpLeft;
-    }
+    } */
     
 // alternative method for damage calculation using if instead of switch
 /* static int damageCalc (String weapon, int hp) {
