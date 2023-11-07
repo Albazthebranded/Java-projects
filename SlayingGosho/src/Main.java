@@ -22,7 +22,7 @@ public class Main {
         System.out.println("Let's get started!");
         wait(1000);
 
-        System.out.println("As you enter the cave, you check your bag. Good thing you took your handy-dandy sword along! You also have one Health potion.");
+        System.out.println("As you enter the cave, you check your bag. Good thing you took your handy-dandy sword along! You also have two Health potions.");
         wait(5000);
 
 
@@ -57,7 +57,7 @@ public class Main {
                 healthPotion = healthPotion - 1;
                 continue;
             }
-            else if (healthPotion <= 0) {
+            else if (healthPotion <= 0 && action.equals("pot")) {
                 System.out.println("You're out of health potions!");
                 continue;
             }
@@ -94,7 +94,7 @@ public class Main {
         System.out.println("You continue down the cave system. Before long you come upon a great gate!");
         wait(4000);
 
-        System.out.println("Guardian the gate is a Black Knight! He sees you and draws a heavy, rusted blade!");
+        System.out.println("Guarding the gate is a Black Knight! He sees you and draws a heavy, rusted blade!");
         wait(5000);
 
         System.out.println("'None shall enter the lair of my master, the mighty dragon, Gosho!");
