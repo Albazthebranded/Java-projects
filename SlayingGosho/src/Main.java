@@ -290,6 +290,23 @@ public class Main {
 
         return hpLeft;
     }
+    
+// alternative method for damage calculation using if instead of switch
+/* static int damageCalc (String weapon, int hp) {
+        Random RNGDmg = new Random();
+        int hpLeft = hp;
+        if (weapon.equals("sword")) {
+            hpLeft = hp - (30 + RNGDmg.nextInt(10));
+        }
+        else if (weapon.equals("axe")) {
+            hpLeft = hp - (20 + RNGDmg.nextInt(50));
+        }  
+        else if (weapon.equals("bow")) {
+            hpLeft = hp - (15 + RNGDmg.nextInt(25));
+        }  
+        return hpLeft;
+    } */
+    
     static void wait (int time) throws InterruptedException {
         Thread.sleep(time);
     }
