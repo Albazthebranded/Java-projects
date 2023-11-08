@@ -56,23 +56,19 @@ public class Main {
                 playerHP = 100;
                 healthPotion = healthPotion - 1;
                 continue;
-            }
-            else if (healthPotion <= 0 && action.equals("pot")) {
+            } else if (healthPotion <= 0 && action.equals("pot")) {
                 System.out.println("You're out of health potions!");
                 continue;
-            }
-            else if (action.equals("sword")) {
+            } else if (action.equals("sword")) {
                 ogreHP = damageCalc(action, ogreHP);
                 if (ogreHP > 0) {
                 System.out.println("The Ogre has " + ogreHP + " health left!");
-                }
-                else {
+                } else {
                     System.out.println("The Ogre has been slain!");
                     wait(3000);
                     break;
                 }
-            }
-            else {
+            } else {
                 System.out.println("This is not a valid choice! I ask again: What would you like to do?");
                 continue;
             }
@@ -112,12 +108,10 @@ public class Main {
                 playerHP = 100;
                 healthPotion = healthPotion - 1;
                 continue;
-            }
-            else if (healthPotion <= 0 && action.equals("pot")) {
+            } else if (healthPotion <= 0 && action.equals("pot")) {
                 System.out.println("You're out of health potions!");
                 continue;
-            }
-            else if (action.equals("sword") || action.equals("axe")) {
+            } else if (action.equals("sword") || action.equals("axe")) {
                 blackKnightHp = damageCalc(action, blackKnightHp);
                 if (blackKnightHp > 0) {
                     System.out.println("The Black Knight has " + blackKnightHp + " health left!");
@@ -126,8 +120,7 @@ public class Main {
                     wait(3000);
                     break;
                 }
-            }
-            else {
+            } else {
                     System.out.println("This is not a valid choice! I ask again: What would you like to do?");
                     continue;
             }
@@ -195,25 +188,21 @@ public class Main {
                 playerHP = 100;
                 healthPotion = healthPotion - 1;
                 continue;
-            }
-            else if (healthPotion <= 0 && action.equals("pot")) {
+            } else if (healthPotion <= 0 && action.equals("pot")) {
                 System.out.println("You're out of health potions!");
                 continue;
-            }
-            else if (action.equals("sword") || action.equals("axe") || action.equals("bow")) {
+            } else if (action.equals("sword") || action.equals("axe") || action.equals("bow")) {
                 dragonHp = damageCalc(action, dragonHp);
                 if (dragonHp >= 200) {
                     System.out.println("GOSHO, the Dragon has " + dragonHp + " health left!");
-                }
-                else {
+                } else {
                     System.out.println("GOSHO, the Dragon has " + dragonHp + " health left!");
                     wait(3000);
                     System.out.println("GOSHO, the Dragon flies up into the air, out of reach of your melee weapons!");
                     wait(3000);
                     break;
                 }
-            }
-            else {
+            } else {
                 System.out.println("This is not a valid choice! I ask again: What would you like to do?");
                 continue;
             }
@@ -236,26 +225,21 @@ public class Main {
                 playerHP = 100;
                 healthPotion = healthPotion - 1;
                 continue;
-            }
-            else if (healthPotion <= 0 && action.equals("pot")) {
+            } else if (healthPotion <= 0 && action.equals("pot")) {
                 System.out.println("You're out of health potions!");
                 continue;
-            }
-            else if (action.equals("bow")) {
+            } else if (action.equals("bow")) {
                 dragonHp = damageCalc(action, dragonHp);
                 if (dragonHp >= 0) {
                     System.out.println("GOSHO, the Dragon has " + dragonHp + " health left!");
-                }
-                else {
+                } else {
                     System.out.println("GOSHO, the Dragon has been slain!!!");
                     wait(3000);
                     break;
                 }
-            }
-            else if (action.equals("sword") || action.equals("axe")) {
+            } else if (action.equals("sword") || action.equals("axe")) {
                 System.out.println("Melee weapons have no effect on GOSHO while he's airborne!");
-            }
-            else {
+            } else {
                 System.out.println("This is not a valid choice! I ask again: What would you like to do?");
                 continue;
             }
