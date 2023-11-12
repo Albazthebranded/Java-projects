@@ -318,11 +318,9 @@ public class Main {
             case ("sword"):
                 hpLeft = hp - (30 + RNGDmg.nextInt(10));
                 break;
-
             case ("axe"):
                 hpLeft = hp - (20 + RNGDmg.nextInt(50));
                 break;
-
             case ("bow"):
                 hpLeft = hp - (15 + RNGDmg.nextInt(25));
                 break;
