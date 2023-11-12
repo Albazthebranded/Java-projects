@@ -79,7 +79,7 @@ public class Main {
 
             System.out.println("What would you like to do?");
 
-            action = scan.nextLine();
+            action = scan.next();
 
             if (action.equals("info")) {
                 combatInfo();
@@ -153,7 +153,7 @@ public class Main {
         enemyHP = 200;
         while (enemyHP > 0) {
             System.out.println("What would you like to do?");
-            action = scan.nextLine();
+            action = scan.next();
 
             if (action.equals("info")) {
                 combatInfo();
@@ -232,7 +232,7 @@ public class Main {
         enemyHP = 400;
         while (enemyHP >= 200) {
             System.out.println("What would you like to do?");
-            action = scan.nextLine();
+            action = scan.next();
 
             if (action.equals("info")) {
                 combatInfo();
@@ -269,7 +269,7 @@ public class Main {
 
         while (enemyHP > 0) {
             System.out.println("What would you like to do?");
-            action = scan.nextLine();
+            action = scan.next();
 
             if (action.equals("info")) {
                 combatInfo();
@@ -334,7 +334,7 @@ public class Main {
     }
 
     static void combatInfo() throws InterruptedException {
-        System.out.println("You have " + playerHP + "/100" + " health left.");
+        System.out.println("You have " + playerHP + "/100 health left.");
         System.out.println("You have " + healthPotCount + " health potions left.");
         System.out.println("The enemy has " + enemyHP + " health left.");
         wait(2000);
