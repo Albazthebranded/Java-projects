@@ -283,6 +283,9 @@ public class Main {
 
         return hpLeft;
     }
+     static void wait (int time) throws InterruptedException {
+        Thread.sleep(time);
+    }
     
    // java 14 method suggested by java as a replacement for if variant (see below) 
    /* static int damageCalc (String weapon, int hp)
@@ -296,10 +299,10 @@ public class Main {
         };
 
         return hpLeft;
-    } */
+    }
     
-// alternative method for damage calculation using if instead of switch
-/* static int damageCalc (String weapon, int hp) {
+    // alternative method for damage calculation using if instead of switch
+    static int damageCalc (String weapon, int hp) {
         Random RNGDmg = new Random();
         int hpLeft = hp;
         if (weapon.equals("sword")) {
@@ -312,9 +315,5 @@ public class Main {
             hpLeft = hp - (15 + RNGDmg.nextInt(25));
         }  
         return hpLeft;
-    } */
-    
-    static void wait (int time) throws InterruptedException {
-        Thread.sleep(time);
-    }
+    } */ 
 }
